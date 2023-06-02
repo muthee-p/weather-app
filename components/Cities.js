@@ -58,12 +58,12 @@ const Cities = ({city}) =>{
     }
   };
 	return(
-		<div>
+		<div className='bg-gray-600 p-4 m-4 w-64 rounded-xl'>
 				<h2>{city}</h2>
 				{weather && (
 			<div>
 				{getWeatherIcon(weather.weather[0].icon)}
-				<p>Temp:{weather.main.temp}°C</p>
+				<h2 className='text-2xl'>{Math.round(weather.main.temp - 273.15)}°C</h2>
 				<p>Weather: { weather.weather[0].description}</p>
 				</div>
 				)}

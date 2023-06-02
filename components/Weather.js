@@ -19,14 +19,19 @@ const Weather = () =>{
 		}
 	}
 	return(
-		<div>
-			<input type='text' value={city} onChange={(e) => setCity(e.target.value)} />
-			<button onClick ={ fetchWeather}> view Weather </button>
-
+		<div className='mt-4'>
+		<div className='flex items-center justify-between'>
+			<input
+			className='rounded-3xl p-2 md:p-3 w-32 md:w-64 text-gray-700' 
+			type='text' value={city} 
+			onChange={(e) => setCity(e.target.value)} 
+			placeholder='search weather'/>
+			<button onClick ={ fetchWeather} className='black_btn'> Search </button>
+			</div>
 			{weather && (
-				<div>
+				<div className='bg-gray-600 p-4 rounded-xl mt-6'>
 				<h2>{weather.name}</h2>
-				<p>Temp:{weather.main.temp}</p>
+				<p>{Math.round(weather.main.temp - 273.15)}°C</p>
 				<p>Weather: { weather.weather[0].description}</p>
 				</div>
 				)}
