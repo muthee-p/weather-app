@@ -1,9 +1,11 @@
-import { useState, useEffect } from 'react'
+'use client'
 
-import { Line } from 'react-chartjs-2';
+import React, { useState, useEffect } from 'react';
+import axios from'axios';
+import { Bar } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
-  LineElement,
+  BarElement,
   CategoryScale,
   LinearScale,
   PointElement,
@@ -11,40 +13,68 @@ import {
   Legend
 } from 'chart.js';
 
-const BarChart = () =>{
+ChartJS.register(
+  BarElement,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  Tooltip,
+  Legend
+);
 
-  ChartJS.register(
-    LineElement,
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    Tooltip,
-    Legend
-    )
+const BarChart = () => {
+  const [weatherData, setWeatherData] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const cities = ['Nairobi', 'London', 'Paris', 'New York', 'Tokyo', 'Dubai', 'Barcelona', 'Rome', 'Madrid'];
+      const promises = cities.map((city) =>
+        fetchWeatherData(city)
+      );
+      const data = await Promise.all(promises);
+      setWeatherData(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const fetchWeatherData = async (city) => {
+    try {
+      const response = await axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=edb0fe981a251239e860b7e8d4828073`
+      );
+      const temperature = Math.round(response.data.main.temp - 273.15);
+      return temperature;
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
+  };
+
   const data = {
-    labels: ['Mon', 'Tue', 'Wed'],
+    labels: ['Nairobi', 'London', 'Paris', 'New York', 'Tokyo', 'Dubai', 'Barcelona', 'Rome', 'Madrid'],
     datasets: [
-    {
-      label: '369',
-      data: [3, 6, 9],
-      backgroundColor: 'aqua',
-      borderColor: 'black',
-      borderWidth:1,
-    }]
-  }
+      {
+        label: 'Temperature (°C)',
+        data: weatherData,
+        backgroundColor: 'rgba(0, 123, 255, 0.2)',
+        borderColor: 'rgba(0, 123, 255, 1)',
+        borderWidth: 1,
+      },
+    ],
+  };
 
-const options={
+  const options = {};
 
-}
+  return (
+    <div>
+      <Bar data={data} options={options} />
+    </div>
+  );
+};
 
-	return (
-		<div className=''>
-           <Line
-            data = {data}
-            options = {options}
-            ></Line> 
-          </div>
-		)
-}
-
-export default BarChart
+export default BarChart;
