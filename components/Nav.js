@@ -4,16 +4,16 @@ import Image from 'next/image'
 
 const Nav = () =>{
 	return (
-		<div className='w-full flex justify-between items-center'>
+		<div className='top-0 bg-[rgb(var(--background-end-rgb))] fixed w-full flex justify-between items-center p-2 pr-8 pl-8'>
             <Image
               src="/vercel.svg"
               alt="Vercel Logo"
               className="dark:invert"
-              width={100}
-              height={24}
+              width={50}
+              height={12}
               priority
             />
-            <h2 className='text-2xl'>Next Weather</h2>
+            <h2 className='text-xl'>Next Weather</h2>
           </div>
 		)
 }

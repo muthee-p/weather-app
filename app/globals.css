@@ -30,5 +30,5 @@ body {
 }
 
 .black_btn {
-  @apply rounded-full  bg-white py-1.5 px-5 text-black transition-all hover:bg-white hover:text-black text-center text-sm flex items-center justify-center;
+  @apply rounded-full  bg-[rgb(var(--background-end-rgb))] py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm flex items-center justify-center;
 }
