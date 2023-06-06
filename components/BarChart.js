@@ -45,7 +45,7 @@ const BarChart = () => {
   const fetchWeatherData = async (city) => {
     try {
       const response = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=edb0fe981a251239e860b7e8d4828073`
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.NEXT_PUBLIC_API_KEY}`
       );
       const temperature = Math.round(response.data.main.temp - 273.15);
       return temperature;
@@ -71,7 +71,7 @@ const BarChart = () => {
   const options = {};
 
   return (
-    <div>
+    <div className='w-full h-full mt-12'>
       <Bar data={data} options={options} />
     </div>
   );

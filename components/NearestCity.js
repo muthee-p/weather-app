@@ -14,7 +14,7 @@ const NearestCity = ({ city, lat, lon }) => {
   const fetchWeatherData = async () => {
     try {
       const response = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?${lat ? `lat=${lat}&lon=${lon}` : `q=${city}`}&appid=edb0fe981a251239e860b7e8d4828073`
+        `https://api.openweathermap.org/data/2.5/weather?${lat ? `lat=${lat}&lon=${lon}` : `q=${city}`}&appid=${process.env.NEXT_PUBLIC_API_KEY}`
       );
       setWeatherData(response.data);
     } catch (error) {
@@ -23,11 +23,11 @@ const NearestCity = ({ city, lat, lon }) => {
   };
 
   return (
-    <div>
+    <div className= 'card'>
       <h2>{city}</h2>
       {weatherData && (
         <div>
-          <p>Temperature: {weatherData.main.temp}</p>
+          <p>Temperature: {Math.round(weatherData.main.temp - 273.15)}°C</p>
           <p>Weather: {weatherData.weather[0].description}</p>
         </div>
       )}

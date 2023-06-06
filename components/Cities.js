@@ -19,7 +19,7 @@ const Cities = ({city}) =>{
 
 	const fetchWeather = async () =>{
 		try{
-			const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=edb0fe981a251239e860b7e8d4828073`)
+			const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.NEXT_PUBLIC_API_KEY}`)
 			setWeather(response.data);
 		}catch (error){
 			console.error(error)
@@ -60,7 +60,7 @@ const Cities = ({city}) =>{
     }
   };
 	return(
-		<div className='bg-gray-600 p-4 m-4 w-64 rounded-xl'>
+		<div className='card'>
 				<h2>{city}</h2>
 				{weather && (
 			<div>
