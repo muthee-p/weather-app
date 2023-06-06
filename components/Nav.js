@@ -27,7 +27,7 @@ const Nav = () =>{
   }, []);
 
 	return (
-		<div className='top-0 fixed w-full flex justify-center pr-8 pl-8 bg-slate-900 backdrop-filter backdrop-blur-lg bg-opacity-30 z-10'>
+		<div className='top-0 fixed w-full flex justify-center bg-slate-900 backdrop-filter backdrop-blur-lg bg-opacity-30 z-10'>
         <div className='flex justify-between items-center p-2 w-[90%]'>
           <div className='flex items-center'>
             <Image
@@ -38,7 +38,7 @@ const Nav = () =>{
               height={58}
               priority
             />
-            <h2 className='text-xl font-mono'>Next Weather</h2>
+            <h2 className='text-xl font-mono hidden md:block'>Next Weather</h2>
             </div>
             {userLocation && (
               <NearestCity

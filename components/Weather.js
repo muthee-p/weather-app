@@ -20,7 +20,7 @@ const Weather = () =>{
 		}
 	}
 	return(
-		<div className=' card mt-4 mb-4 w-[70%]'>
+		<div className=' card mt-4 pl-2 mb-4 md:w-[70%]'>
 		<div className='flex items-center justify-around'>
 			<input
 			className='rounded-full pl-4 p-2 w-32 md:w-64 text-gray-700' 
