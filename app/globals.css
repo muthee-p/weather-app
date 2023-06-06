@@ -35,5 +35,5 @@ body {
   @apply rounded-full  bg-slate-900 py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm flex items-center justify-center;
 }
 .card{
-  @apply bg-gray-600 p-4 m-4 w-64 rounded-xl backdrop-filter backdrop-blur-lg bg-opacity-30 hover:bg-blue-500 transition-colors duration-300;
+  @apply bg-gray-600 p-4 rounded-xl backdrop-filter backdrop-blur-lg bg-opacity-30 hover:bg-slate-500 transition-colors duration-300;
 }

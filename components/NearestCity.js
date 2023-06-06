@@ -3,6 +3,8 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { getWeatherIcon } from '@utils/weatherUtils'
+import Image from 'next/image'
 
 const NearestCity = ({ city, lat, lon }) => {
   const [weatherData, setWeatherData] = useState(null);
@@ -23,12 +25,29 @@ const NearestCity = ({ city, lat, lon }) => {
   };
 
   return (
-    <div className= 'card'>
-      <h2>{city}</h2>
+    <div>
+    
       {weatherData && (
-        <div>
-          <p>Temperature: {Math.round(weatherData.main.temp - 273.15)}°C</p>
-          <p>Weather: {weatherData.weather[0].description}</p>
+        <div className='flex justify-around items-center'>
+        
+        <Image 
+          src="/assets/icons/location.svg" 
+          alt="Location icon" 
+          width={25} 
+          height={25}
+          style={{ fill: "blue" }}
+        />
+        <h2 className='text-lg text-blue-500 font-mono'>{weatherData.name}</h2>
+       
+        
+        <div className='w-[10%]'>
+        {getWeatherIcon(weatherData.weather[0].icon)}
+        </div>
+        
+          <p>{Math.round(weatherData.main.temp - 273.15)}°C </p>
+          <p className='font-mono'>{weatherData.weather[0].description}</p>
+        
+        
         </div>
       )}
     </div>

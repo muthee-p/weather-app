@@ -37,19 +37,12 @@ export default function Home() {
         <div className='flex justify-between flex-col md:flex-row'>
           <div className='md:w-[60%]'>
             <Weather />
-            {userLocation && (
-              <NearestCity
-                city="Nearest City"
-                lat={userLocation.lat}
-                lon={userLocation.lon}
-              />
-            )}
             
             <BarChart />
           </div>
 
           <div className='md:w-[40%] '>
-            <h3 className='m-6 text-xl'>Suggested Cities</h3>
+            <h3 className='m-6 text-xl font-mono'>Suggested Cities</h3>
             <div className='flex justify-between flex-col'>
               <div className='flex flex-col md:flex-row'>
                 <Cities city='London'/>
